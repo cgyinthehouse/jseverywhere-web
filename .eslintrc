@@ -3,28 +3,34 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "prettier",
-    "prettier/react"
+    "plugin:prettier/recommended"
   ],
   "parserOptions": {
-    "ecmaVersion": 2017,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     }
   },
-  "plugins": ["react", "prettier", "jsx-a11y", "eslint-plugin-cypress"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier",
+    "jsx-a11y",
+    "eslint-plugin-cypress"
+  ],
   "env": {
-    "es6": true,
+    "es2022": true,
     "browser": true,
     "node": true,
     "cypress/globals": true
   },
   "rules": {
-    "no-console": "off", // We use console.log for demonstrative purposes
-    "no-unused-vars": "off", // At times we have unused variables across chapters/sections
-    "react-hooks/rules-of-hooks": "error", // Checks rules of React Hooks
-    "react-hooks/exhaustive-deps": "warn" // Checks Hooks effect dependencies
+    "no-console": "off",
+    "no-unused-vars": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "prettier/prettier": "warn",
+    "react/prop-types":0
   },
   "settings": {
     "react": {
