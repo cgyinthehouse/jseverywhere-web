@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import { format } from 'date-fns'
+import { formatInTimeZone } from 'date-fns-tz'
 import styled from 'styled-components'
 
 const StyledNote = styled.article`
@@ -21,19 +21,30 @@ const UserActions = styled.div`
 `
 
 const Note = ({ note }) => {
-  format(note.createdAt, 'MMM Do YYYY')
   return (
-    <article>
-      <img
-        src={note.author.avatar}
-        alt={`${note.author.username} avatar`}
-        height="50px"
-      />
-      {`
-            ${note.author.username} ${note.createdAt} ${note.favoriteCount}
-          `}
+    <StyledNote>
+      <MetaData>
+        <MetaInfo>
+          <img
+            src={note.author.avatar}
+            alt={`${note.author.username} avatar`}
+            height="50px"
+          />
+        </MetaInfo>
+        <MetaInfo>
+          <em>by</em> {note.author.username} <br />
+          {formatInTimeZone(
+            new Date(note.createdAt),
+            'Asia/Taipei',
+            'MMM do yyyy'
+          )}
+        </MetaInfo>
+        <UserActions>
+          <em>Favorites:</em> {note.favoriteCount}
+        </UserActions>
+      </MetaData>
       <ReactMarkdown>{note.content}</ReactMarkdown>
-    </article>
+    </StyledNote>
   )
 }
 

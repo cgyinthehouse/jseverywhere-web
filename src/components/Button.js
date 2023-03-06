@@ -1,6 +1,7 @@
+import React from 'react'
 import styled from 'styled-components'
 
-const Button = styled.button`
+export const Button = styled.button`
   display: block;
   padding: 10px;
   border: none;
@@ -19,4 +20,25 @@ const Button = styled.button`
   }
 `
 
-export default Button
+export const LoadMoreButton = ({ fetchMore, data }) => {
+  const onClick = () => {
+    // https://www.apollographql.com/docs/react/data/queries/#fetchmore
+    fetchMore({
+      variables: { cursor: data.noteFeed.cursor },
+      updateQuery(previousResult, { fetchMoreResult }) {
+        return {
+          noteFeed: {
+            cursor: fetchMoreResult.noteFeed.cursor,
+            hasNextPage: fetchMoreResult.noteFeed.hasNextPage,
+            notes: [
+              ...previousResult.noteFeed.notes,
+              ...fetchMoreResult.noteFeed.notes
+            ],
+            __typename: 'noteFeed'
+          }
+        }
+      }
+    })
+  }
+  return <Button onClick={onClick}>Load More</Button>
+}

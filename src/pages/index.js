@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Favorites from './favorites'
 import Mynotes from './mynotes'
 import Home from './home'
+import NotePage from './note'
+import SignUp from './signup'
 
 // Layout component
 import Layout from '../components/Layout'
@@ -17,6 +19,8 @@ const Pages = () => {
           <Route exact path="/" element={<Home />} />
           <Route path="/mynotes" element={<Mynotes />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/note/:id" element={<NotePage />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </Layout>
     </Router>
