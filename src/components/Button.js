@@ -8,17 +8,24 @@ export const Button = styled.button`
   border-radius: 5px;
   font-size: 18px;
   color: #fff;
-  background-color: #0077cc;
-  cursor: pointer;
+  background-color: ${(props) => (props.btnPress.dim ? '#3b3b3f' : '#0077cc')};
+  cursor: ${(props) => (props.btnPress.pointer ? 'pointer' : 'default')};
 
   :hover {
-    opacity: 0.8;
+    opacity: ${(props) => (props.btnPress.opacity ? 0.8 : 1)};
   }
 
   :active {
     background-color: #005fa3;
   }
 `
+Button.defaultProps = {
+  btnPress: {
+    dim: false,
+    pointer: true,
+    opacity: true
+  }
+}
 
 export const LoadMoreButton = ({ fetchMore, data }) => {
   const onClick = () => {

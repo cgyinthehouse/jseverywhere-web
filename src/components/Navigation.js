@@ -57,7 +57,7 @@ const Navigation = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="mynotes" style={style}>
+          <NavLink to="/mynotes" style={style}>
             <span aria-hidden="true" role="img">
               📓
             </span>
@@ -65,11 +65,19 @@ const Navigation = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="favorites" style={style}>
+          <NavLink to="/favorites" style={style}>
             <span aria-hidden="true" role="img">
               🌟
             </span>
             Favorites
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/new" style={style}>
+            <span aria-hidden="true" role="img">
+              📝
+            </span>
+            New Note
           </NavLink>
         </li>
       </NavList>
