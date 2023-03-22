@@ -19,7 +19,7 @@ const DeleteNote = ({ id }) => {
     <ButtonAsLink
       onClick={() => {
         confirm('Are you sure to delete this note?')
-        deleteNote
+        deleteNote()
       }}
     >
       Delete Note
